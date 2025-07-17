@@ -2,12 +2,14 @@ import tkinter as tk
 
 main = tk.Tk()
 main.title("Smart Home Sim")
-main.geometry("550x300")
+main.geometry("600x350")
 main.configure(background = "white")
 
 lightframe = tk.LabelFrame(main, text="House Controls", padx=10, pady=10)
 lightframe.pack(padx=20, pady=40, fill="both", expand=True)
-
+lightframe.grid_columnconfigure(0, weight=1)
+lightframe.grid_columnconfigure(1, weight=1)
+lightframe.grid_columnconfigure(2, weight=1)
 
 def togglelight():
     if lightbutton["text"] == "Turn Light On":
@@ -57,26 +59,25 @@ def toggleswitch():
     
 
 lightbutton = tk.Button(lightframe, text="Turn Light On", command=togglelight, width=13)
-lightbutton.grid(row=0, column=0, padx=(0,40))
+lightbutton.grid(row=0, column=0, padx=10, pady=10, sticky="nsew")
 bulblabel = tk.Label(lightframe, text="💡", font=("Arial", 20))
-bulblabel.grid(row=3, column=0, padx=(0,40))
+bulblabel.grid(row=3, column=0, padx=10, pady=10)
 lightstatus = tk.Label(lightframe, text="Light is Off", font=("Arial",10, "bold"))
-lightstatus.grid(row=2, column=0, padx=(0,40))
-
+lightstatus.grid(row=2, column=0, padx=10, pady=10)
 
 lockbutton = tk.Button(lightframe, text="Lock Door", command=togglelock, width=13)
-lockbutton.grid(row=0, column=2, padx=(0,60))
+lockbutton.grid(row=0, column=1, padx=10, pady=10, sticky="nsew")
 locklabel = tk.Label(lightframe, text="🔓", font=("Arial", 20))
-locklabel.grid(row=3, column=2, padx=(0,60))
+locklabel.grid(row=3, column=1, padx=10, pady=10)
 lockstatus = tk.Label(lightframe, text="Door is Open", font=("Arial",10, "bold"))
-lockstatus.grid(row=2, column=2, padx=(0,60))
+lockstatus.grid(row=2, column=1, padx=10, pady=10)
 
 fanspeed = ["Off", "Low", "Medium", "High"]
 fanspeednum = 0
-fanbutton = tk.Button(lightframe, text="Fan Speed", command=togglefan, width=13)
-fanbutton.grid(row=0, column=3)
+fanbutton = tk.Button(lightframe, text="Fan Speed", command=togglefan, width=15)
+fanbutton.grid(row=0, column=2, padx=10, pady=10, sticky="nsew")
 fanlabel = tk.Label(lightframe, text=("Fan Speed: Off"), font=("Arial",10,"bold"), width=16)
-fanlabel.grid(row=2, column=3)
+fanlabel.grid(row=2, column=2, padx=10, pady=10)
 
 Temp = 72
 templabel = tk.Label(lightframe, text="Temperature: 72°F", font=("Arial",10))
@@ -89,10 +90,6 @@ tempdown.grid(row=4, column=1, padx=(0,20), pady=(50,0))
 tempswitch = tk.Button(lightframe, text="Turn Thermostat Off", command=toggleswitch)
 tempswitch.grid(row=4, column=0, padx=(0,20), pady=(60,0))
 main.mainloop()
-    
-
-
-
 
         
         
